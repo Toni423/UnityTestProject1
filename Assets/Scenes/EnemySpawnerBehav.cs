@@ -9,6 +9,7 @@ public class EnemySpawnerBehav : MonoBehaviour
     public GameObject zombie;
     private bool cooldown = false;
     public float spawnCooldown = 10f;
+    private int count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +33,10 @@ public class EnemySpawnerBehav : MonoBehaviour
         transform.Translate(movement);
 
         
-        if(!cooldown)
+        if(count < 2 && !cooldown)
         {
             cooldown = true;
+            count++;
             spawnZombie();
         }
     }

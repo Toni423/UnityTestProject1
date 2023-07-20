@@ -10,10 +10,12 @@ public class SquareBehav : MonoBehaviour
 
     public float verticalSpeed = 5f;
     public GameObject playerBullet;
+    public int life = 3;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
     }
 
     private void Update()
@@ -49,5 +51,18 @@ public class SquareBehav : MonoBehaviour
     private void reload()
     {
         reloading = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the other collider belongs to the "ObjectB."
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            life--;
+            if(life == 0)
+            {
+                Destroy(gameObject, 0.05f);
+            }
+        }
     }
 }

@@ -7,8 +7,9 @@ public class ZombieBehav : MonoBehaviour
     private int direct = 1;
     public float moveSpeed = 3f;
     private bool reloading = false;
-    public float reloadTime = 5f;
+    public float reloadTime = 3f;
     public GameObject bullet;
+    public int life = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,18 @@ public class ZombieBehav : MonoBehaviour
         shoot();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the other collider belongs to the "ObjectB."
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            life--;
+            if(life == 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     private void shoot()
     {

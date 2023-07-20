@@ -22,4 +22,12 @@ public class BulletBehav : MonoBehaviour
         transform.Translate(movement);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the other collider belongs to the "ObjectB."
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject, 0.05f);
+        }
+    }
 }

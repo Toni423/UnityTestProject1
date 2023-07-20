@@ -21,4 +21,13 @@ public class EnemyBulletBehav : MonoBehaviour
         // Update the object's position
         transform.Translate(movement);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the other collider belongs to the "ObjectB."
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject, 0.05f);
+        }
+    }
 }
