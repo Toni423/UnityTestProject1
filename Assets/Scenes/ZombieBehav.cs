@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class ZombieBehav : MonoBehaviour
 {
-    private int direct = 1;
-    public float moveSpeed = 3f;
+    private int direct;
+    public float moveSpeedMin = 2f;
+    public float moveSpeedMax = 4f;
+    private float moveSpeed;
     private bool reloading = false;
-    public float reloadTime = 3f;
+    public float reloadTimeMin = 3f;
+    public float reloadTimeMax = 5f;
     public GameObject bullet;
     public int life = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveSpeed = Random.Range(moveSpeedMin, moveSpeedMax);
+        direct = Random.Range(-1, 1);
+        if(direct == 0)
+        {
+            direct = 1;
+        }
     }
 
     // Update is called once per frame
@@ -60,7 +68,7 @@ public class ZombieBehav : MonoBehaviour
         }
         reloading = true;
         Instantiate(bullet, transform.position, Quaternion.identity);
-        Invoke(nameof(reload), reloadTime);
+        Invoke(nameof(reload), Random.Range(reloadTimeMin, reloadTimeMax));
     }
 
 

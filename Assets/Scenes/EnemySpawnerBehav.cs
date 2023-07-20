@@ -8,7 +8,8 @@ public class EnemySpawnerBehav : MonoBehaviour
     public float moveSpeed = 1f;
     public GameObject zombie;
     private bool cooldown = false;
-    public float spawnCooldown = 10f;
+    public float spawnCooldownMin = 7f;
+    public float spawnCooldownMax = 11f;
     private int count = 0;
 
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class EnemySpawnerBehav : MonoBehaviour
         transform.Translate(movement);
 
         
-        if(count < 2 && !cooldown)
+        if(count < 4 && !cooldown)
         {
             cooldown = true;
             count++;
@@ -57,6 +58,6 @@ public class EnemySpawnerBehav : MonoBehaviour
         }
         Instantiate(zombie, transform.position, Quaternion.identity);
 
-        Invoke(nameof(restoreCooldown), spawnCooldown);
+        Invoke(nameof(restoreCooldown), Random.Range(spawnCooldownMin, spawnCooldownMax));
     }
 }
