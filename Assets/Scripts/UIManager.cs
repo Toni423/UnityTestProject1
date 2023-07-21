@@ -10,6 +10,11 @@ public class UIManager : MonoBehaviour
 
     public void startGame()
     {
+        Invoke(nameof(starting), 1f);
+    }
+
+    private void starting()
+    {
         SceneManager.LoadScene(gameplaySceneName);
     }
 
