@@ -7,6 +7,7 @@ public class BorderBehav : MonoBehaviour
 
     public GameObject player;
     public GameObject enemySpawner;
+    public GameObject itemSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,11 @@ public class BorderBehav : MonoBehaviour
             Debug.Log("Border: EnemySpawner not selected");
         }
         Instantiate(enemySpawner);
+        if (itemSpawner == null)
+        {
+            Debug.Log("Border: ItemSpawner not selected");
+        }
+        Instantiate(itemSpawner);
     }
 
     // Update is called once per frame

@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - 2DmgEnemybullet
   - EnemySpawner
+  - ItemSpawner
   layers:
   - Default
   - TransparentFX

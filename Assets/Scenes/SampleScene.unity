@@ -353,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 410247638837413690, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
   enemySpawner: {fileID: 123559903799313139, guid: 3a2d383693f26c447830362bff930edc, type: 3}
+  itemSpawner: {fileID: 4952951758359673680, guid: ccccac98944b87143be6da2265eb117c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

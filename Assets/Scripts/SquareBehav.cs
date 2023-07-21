@@ -73,4 +73,13 @@ public class SquareBehav : MonoBehaviour
             Destroy(gameObject, 0.05f);
         }
     }
+
+    private object locker = new();
+    public void lifegain(int gain)
+    {
+        lock (locker)
+        {
+            life = Mathf.Min(3, life + gain);
+        }
+    }
 }
