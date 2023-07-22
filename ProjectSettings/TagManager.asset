@@ -10,6 +10,7 @@ TagManager:
   - 2DmgEnemybullet
   - EnemySpawner
   - ItemSpawner
+  - LifeText
   layers:
   - Default
   - TransparentFX

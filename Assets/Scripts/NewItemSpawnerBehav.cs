@@ -57,7 +57,6 @@ public class NewItemSpawnerBehav : SpawnerBehav
             }
             Instantiate(tospawn, transform.position, Quaternion.identity);
 
-            Invoke(nameof(restoreCooldown), Random.Range(spawnCooldownMin, spawnCooldownMax));
 
         }
     }

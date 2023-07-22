@@ -5,18 +5,12 @@ using UnityEngine;
 public class BorderBehav : MonoBehaviour
 {
 
-    public GameObject player;
     public GameObject enemySpawner;
     public GameObject itemSpawner;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(player == null)
-        {
-            Debug.Log("Border: Player not selected");
-        }
-        Instantiate(player);
         if (enemySpawner == null)
         {
             Debug.Log("Border: EnemySpawner not selected");

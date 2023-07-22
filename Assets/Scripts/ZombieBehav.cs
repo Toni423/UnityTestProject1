@@ -13,13 +13,13 @@ public class ZombieBehav : MonoBehaviour
     public float reloadTimeMax = 5f;
     public GameObject bullet;
     public int life = 3;
-    public EnemySpawnerBehav enemySpawner;
+    public NewEnemySpawnerBehav enemySpawner;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
-        enemySpawner = spawner.GetComponent<EnemySpawnerBehav>();
+        enemySpawner = spawner.GetComponent<NewEnemySpawnerBehav>();
 
         moveSpeed = Random.Range(moveSpeedMin, moveSpeedMax);
         direct = Random.Range(-1, 1);
@@ -83,8 +83,9 @@ public class ZombieBehav : MonoBehaviour
             life--;
             if (life == 0)
             {
+                enemySpawner.increaseScore(10);
                 Destroy(gameObject);
-                enemySpawner.enemyDied();
+                enemySpawner.decreaseCount();
             }
         }
     }

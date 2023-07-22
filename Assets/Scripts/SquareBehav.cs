@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SquareBehav : MonoBehaviour
 
@@ -11,9 +14,13 @@ public class SquareBehav : MonoBehaviour
     public float verticalSpeed = 5f;
     public GameObject playerBullet;
     public int life = 3;
+    public GameObject UIlifeText;
+    private TextMeshProUGUI lifeText;
+    
 
     private void Start()
     {
+        lifeText = UIlifeText.GetComponent<TextMeshProUGUI>();
         rb = GetComponent<Rigidbody2D>();
         transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
     }
@@ -59,18 +66,18 @@ public class SquareBehav : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
             life--;
-            
+            lifeText.SetText("Life: " + life);
         }
 
         if (other.gameObject.CompareTag("2DmgEnemybullet"))
         {
             life -= 2;
-            
+            lifeText.text = ("Life: " + life);
         }
 
         if (life <= 0)
         {
-            Destroy(gameObject, 0.05f);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
@@ -80,6 +87,7 @@ public class SquareBehav : MonoBehaviour
         lock (locker)
         {
             life = Mathf.Min(3, life + gain);
+            lifeText.text = ("Life: " + life);
         }
     }
 }

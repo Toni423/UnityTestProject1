@@ -13,14 +13,14 @@ public class SkeletonBehav : MonoBehaviour
     public float reloadTimeMax = 5f;
     public GameObject bullet;
     public int life = 5;
-    public EnemySpawnerBehav enemySpawner;
+    public NewEnemySpawnerBehav enemySpawner;
 
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
-        enemySpawner = spawner.GetComponent<EnemySpawnerBehav>();
+        enemySpawner = spawner.GetComponent<NewEnemySpawnerBehav>();
 
 
         moveSpeed = Random.Range(moveSpeedMin, moveSpeedMax);
@@ -86,8 +86,9 @@ public class SkeletonBehav : MonoBehaviour
             life--;
             if (life == 0)
             {
+                enemySpawner.increaseScore(20);
                 Destroy(gameObject);
-                enemySpawner.enemyDied();
+                enemySpawner.decreaseCount();
             }
         }
     }
