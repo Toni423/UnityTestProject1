@@ -7,6 +7,11 @@ public class ExitButton : MonoBehaviour
 {
     public void toMainScreen()
     {
+        Invoke(nameof(exiting), 0.75f);
+    }
+    private void exiting()
+    {
         SceneManager.LoadScene("MainMenu");
+
     }
 }

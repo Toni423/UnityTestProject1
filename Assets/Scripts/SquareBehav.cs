@@ -16,7 +16,11 @@ public class SquareBehav : MonoBehaviour
     public int life = 3;
     public GameObject UIlifeText;
     private TextMeshProUGUI lifeText;
-    
+    public AudioSource healAudio;
+    public AudioSource shootSound;
+
+
+
 
     private void Start()
     {
@@ -29,7 +33,8 @@ public class SquareBehav : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !reloading)
         {
-            spawnCurBullet();
+            shootSound.Play();
+            Invoke(nameof(spawnCurBullet), 0.2f);
             reloading = true;
             Invoke(nameof(reload), 2f);
         }
@@ -86,6 +91,7 @@ public class SquareBehav : MonoBehaviour
     {
         lock (locker)
         {
+            healAudio.Play();
             life = Mathf.Min(3, life + gain);
             lifeText.text = ("Life: " + life);
         }

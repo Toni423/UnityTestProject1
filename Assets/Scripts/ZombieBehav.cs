@@ -13,7 +13,9 @@ public class ZombieBehav : MonoBehaviour
     public float reloadTimeMax = 5f;
     public GameObject bullet;
     public int life = 3;
-    public NewEnemySpawnerBehav enemySpawner;
+    private NewEnemySpawnerBehav enemySpawner;
+    public AudioSource shootSound;
+    public AudioSource deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -64,10 +66,16 @@ public class ZombieBehav : MonoBehaviour
             return;
         }
         reloading = true;
-        Instantiate(bullet, transform.position, Quaternion.identity);
+        shootSound.Play();
+
+        Invoke(nameof(spawnBullet), 0.2f);
         Invoke(nameof(reload), Random.Range(reloadTimeMin, reloadTimeMax));
     }
 
+    private void spawnBullet()
+    {
+        Instantiate(bullet, transform.position, Quaternion.identity);
+    }
 
     protected void reload()
     {
@@ -83,12 +91,16 @@ public class ZombieBehav : MonoBehaviour
             life--;
             if (life == 0)
             {
+                deathSound.Play();
                 enemySpawner.increaseScore(10);
-                Destroy(gameObject);
+                Invoke(nameof(destroyThis), 0.2f);
                 enemySpawner.decreaseCount();
             }
         }
     }
-
+    private void destroyThis()
+    {
+        Destroy(gameObject);
+    }
 
 }
