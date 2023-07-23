@@ -269,6 +269,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 3781404966316853392, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781404966316853392, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5309660561613009016, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
       propertyPath: lol
       value: 
@@ -283,6 +291,10 @@ PrefabInstance:
       objectReference: {fileID: 1871447214}
     - target: {fileID: 5309660561613009016, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
       propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 873381656}
+    - target: {fileID: 5309660561613009016, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
+      propertyPath: superiorShootSound
       value: 
       objectReference: {fileID: 873381650}
     - target: {fileID: 7314257865380844155, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
@@ -332,6 +344,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 410247638837413690, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873381649}
+    - targetCorrespondingSourceObject: {fileID: 410247638837413690, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 873381656}
     - targetCorrespondingSourceObject: {fileID: 410247638837413690, guid: bb44732968c136e4e8e2fafbadf8a25a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873381650}
@@ -706,7 +721,103 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8401456349c492a489ed90469e317e43, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &873381656
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873381643}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonBehav : MonoBehaviour 
+public class NewEnemy : MonoBehaviour
 {
     private int direct;
     public float moveSpeedMin = 1.5f;
@@ -12,10 +12,11 @@ public class SkeletonBehav : MonoBehaviour
     public float reloadTimeMin = 3f;
     public float reloadTimeMax = 5f;
     public GameObject bullet;
-    public int life = 5;
+    public int life = 3;
     private NewEnemySpawnerBehav enemySpawner;
     public AudioSource shootSound;
     public AudioSource deathSound;
+
 
 
     // Start is called before the first frame update
@@ -23,7 +24,6 @@ public class SkeletonBehav : MonoBehaviour
     {
         GameObject spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemySpawner = spawner.GetComponent<NewEnemySpawnerBehav>();
-
 
         moveSpeed = Random.Range(moveSpeedMin, moveSpeedMax);
         direct = Random.Range(-1, 1);
@@ -33,7 +33,6 @@ public class SkeletonBehav : MonoBehaviour
         }
     }
 
-
     // Update is called once per frame
     void Update()
     {
@@ -42,7 +41,7 @@ public class SkeletonBehav : MonoBehaviour
         shoot();
     }
 
-    protected void move()
+    private void move()
     {
         if (gameObject.transform.position.y > 4.156 || gameObject.transform.position.y < -4.526)
         {
@@ -56,8 +55,7 @@ public class SkeletonBehav : MonoBehaviour
         transform.Translate(movement);
     }
 
-
-    protected void shoot()
+    private void shoot()
     {
         if (reloading)
         {
@@ -65,7 +63,7 @@ public class SkeletonBehav : MonoBehaviour
         }
         if (bullet == null)
         {
-            Debug.Log("Skeleton: No bullet selected");
+            Debug.Log("Enemy: No bullet selected");
             return;
         }
         reloading = true;
@@ -73,17 +71,14 @@ public class SkeletonBehav : MonoBehaviour
         Invoke(nameof(spawnBullet), 0.2f);
         Invoke(nameof(reload), Random.Range(reloadTimeMin, reloadTimeMax));
     }
-
     private void spawnBullet()
     {
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
-
-    protected void reload()
+    private void reload()
     {
         reloading = false;
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {

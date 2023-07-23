@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2756527546328787637}
-  - component: {fileID: 2876068215201764798}
   - component: {fileID: -8856157416020246681}
   m_Layer: 0
   m_Name: EnemySpawner
@@ -33,24 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2876068215201764798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123559903799313139}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8e33b9e3b3e4c44950e507f819be0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  zombie: {fileID: 8441814360941443366, guid: ff6308699222b7049876f0ad6728da6d, type: 3}
-  skeleton: {fileID: 5933853990136620532, guid: 1d5a309879b267e408b130aeb7068ce3, type: 3}
-  spawnCooldownMin: 7
-  spawnCooldownMax: 11
-  count: 0
 --- !u!114 &-8856157416020246681
 MonoBehaviour:
   m_ObjectHideFlags: 0

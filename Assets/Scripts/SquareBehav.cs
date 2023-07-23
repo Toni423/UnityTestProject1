@@ -10,15 +10,19 @@ public class SquareBehav : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool reloading = false;
+    private float reloadTime = 2f;
 
     public float verticalSpeed = 5f;
     public GameObject playerBullet;
+    public GameObject superiorPlayerBullet;
     public int life = 3;
     public GameObject UIlifeText;
     private TextMeshProUGUI lifeText;
     public AudioSource healAudio;
     public AudioSource shootSound;
-
+    public AudioSource superiorShootSound;
+    private bool isWpressed = false;
+    private float shootStartTime;
 
 
 
@@ -31,34 +35,69 @@ public class SquareBehav : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !reloading)
+
+        if (Input.GetKey(KeyCode.Space) && !reloading && !isWpressed)
         {
-            shootSound.Play();
-            Invoke(nameof(spawnCurBullet), 0.2f);
             reloading = true;
-            Invoke(nameof(reload), 2f);
+            isWpressed = true;
+            shootStartTime = Time.time;
+        }
+        else if (!Input.GetKey(KeyCode.Space) && isWpressed)
+        {
+            StartCoroutine(shoot(Time.time - shootStartTime));
+            isWpressed = false;
+            Invoke(nameof(reload), reloadTime);
+            
         }
     }
 
     private void FixedUpdate()
     {
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        Vector2 movement = Time.fixedDeltaTime * verticalSpeed * new Vector2(0f, vertical).normalized;
-
-        rb.MovePosition(rb.position + movement);
-
-    }
-
-    private void spawnCurBullet()
-    {
-        if(playerBullet == null)
+        if(!isWpressed)
         {
-            Debug.Log("Player: no bullet selected");
-            return;
+            float vertical = Input.GetAxisRaw("Vertical");
+
+            Vector2 movement = Time.fixedDeltaTime * verticalSpeed * new Vector2(0f, vertical).normalized;
+
+            rb.MovePosition(rb.position + movement);
         }
-        Instantiate(playerBullet, transform.position, Quaternion.identity);
+
     }
+
+    private IEnumerator shoot(float loadTime)
+    {
+        if(loadTime < 2f)
+        {
+            shootSound.Play();
+        }
+        else
+        {
+            superiorShootSound.Play();
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+
+        if (loadTime < 2f)
+        {
+            if (playerBullet == null)
+            {
+                Debug.Log("Player: No bullet selected");
+                yield break;
+            }
+            Instantiate(playerBullet, transform.position, Quaternion.identity);
+            yield break;
+        }
+        else if (playerBullet == null)
+        {
+            Debug.Log("Player: No superior bullet selected");
+            yield break;
+        }
+        BulletBehav temp = Instantiate(playerBullet, transform.position, Quaternion.identity).GetComponent<BulletBehav>();
+        temp.moveSpeed = 14;
+    }
+
+    
 
     private void reload()
     {
