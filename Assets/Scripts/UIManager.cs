@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
 
-    public string gameplaySceneName = "SampleScene";
+    public string gameplaySceneName = "PlayScene";
 
     public void startGame()
     {

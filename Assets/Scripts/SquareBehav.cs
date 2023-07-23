@@ -23,6 +23,9 @@ public class SquareBehav : MonoBehaviour
     public AudioSource superiorShootSound;
     private bool isWpressed = false;
     private float shootStartTime;
+    public Slider reloadSlider;
+    public Slider chargeSlider;
+    private bool charging = false;
 
 
 
@@ -31,6 +34,10 @@ public class SquareBehav : MonoBehaviour
         lifeText = UIlifeText.GetComponent<TextMeshProUGUI>();
         rb = GetComponent<Rigidbody2D>();
         transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
+        reloadSlider.maxValue = reloadTime;
+        reloadSlider.value = reloadSlider.maxValue;
+        chargeSlider.maxValue = 2f;
+        chargeSlider.value = 0f;
     }
 
     private void Update()
@@ -42,13 +49,26 @@ public class SquareBehav : MonoBehaviour
             isWpressed = true;
             shootStartTime = Time.time;
         }
+        else if(Input.GetKey(KeyCode.Space) && isWpressed && !charging)
+        {
+            charging = true;
+            chargeSlider.value += 0.1f;
+            Invoke(nameof(releaseCharge), 0.1f);
+        }
         else if (!Input.GetKey(KeyCode.Space) && isWpressed)
         {
+            chargeSlider.value = 0f;
             StartCoroutine(shoot(Time.time - shootStartTime));
+            reloadSlider.value = 0f;
+            StartCoroutine(reloadBar());
             isWpressed = false;
             Invoke(nameof(reload), reloadTime);
             
         }
+    }
+    private void releaseCharge()
+    {
+        charging = false;
     }
 
     private void FixedUpdate()
@@ -97,7 +117,14 @@ public class SquareBehav : MonoBehaviour
         temp.moveSpeed = 14;
     }
 
-    
+    private IEnumerator reloadBar()
+    {
+        while(reloadSlider.value < reloadTime)
+        {
+            reloadSlider.value += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
     private void reload()
     {
