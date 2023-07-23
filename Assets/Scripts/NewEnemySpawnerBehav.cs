@@ -21,7 +21,6 @@ public class NewEnemySpawnerBehav : SpawnerBehav
         transform.SetPositionAndRotation(new Vector3(8.4f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
     }
 
-    
 
     protected override GameObject getObjectToSpawn()
     {
@@ -43,7 +42,15 @@ public class NewEnemySpawnerBehav : SpawnerBehav
         lock (locker2)
         {
             score += points;
-            scoreBoard.SetText("Score: " + score);
+            scoreBoard.SetText("" + score);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
         }
     }
 }

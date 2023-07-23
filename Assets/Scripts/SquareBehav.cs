@@ -16,8 +16,6 @@ public class SquareBehav : MonoBehaviour
     public GameObject playerBullet;
     public GameObject superiorPlayerBullet;
     public int life = 3;
-    public GameObject UIlifeText;
-    private TextMeshProUGUI lifeText;
     public AudioSource healAudio;
     public AudioSource shootSound;
     public AudioSource superiorShootSound;
@@ -26,12 +24,14 @@ public class SquareBehav : MonoBehaviour
     public Slider reloadSlider;
     public Slider chargeSlider;
     private bool charging = false;
+    public GameObject healthbar;
+    private Image health;
 
 
 
     private void Start()
     {
-        lifeText = UIlifeText.GetComponent<TextMeshProUGUI>();
+        health = healthbar.GetComponent<Image>();
         rb = GetComponent<Rigidbody2D>();
         transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
         reloadSlider.maxValue = reloadTime;
@@ -137,17 +137,18 @@ public class SquareBehav : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
             life--;
-            lifeText.SetText("Life: " + life);
+            health.fillAmount = life / 3f;
         }
 
         if (other.gameObject.CompareTag("2DmgEnemybullet"))
         {
             life -= 2;
-            lifeText.text = ("Life: " + life);
+            health.fillAmount = life / 3f;
         }
 
         if (life <= 0)
         {
+
             SceneManager.LoadScene("MainMenu");
         }
     }
@@ -159,7 +160,7 @@ public class SquareBehav : MonoBehaviour
         {
             healAudio.Play();
             life = Mathf.Min(3, life + gain);
-            lifeText.text = ("Life: " + life);
+            health.fillAmount = life / 3f;
         }
     }
 }

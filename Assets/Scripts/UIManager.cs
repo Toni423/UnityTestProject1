@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class UIManager : MonoBehaviour
 {
+    
 
-    public string gameplaySceneName = "PlayScene";
+    private void Start()
+    {
+        TextMeshProUGUI highscore = GameObject.Find("HighScoreText").GetComponent<TextMeshProUGUI>();
+        highscore.SetText("HighScore: " + PlayerPrefs.GetInt("HighScore", 0));
+    }
 
     public void startGame()
     {
@@ -15,7 +22,6 @@ public class UIManager : MonoBehaviour
 
     private void starting()
     {
-        SceneManager.LoadScene(gameplaySceneName);
+        SceneManager.LoadScene("PlayScene");
     }
-
 }
