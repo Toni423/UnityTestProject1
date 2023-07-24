@@ -16,6 +16,7 @@ public class NewEnemy : MonoBehaviour
     private NewEnemySpawnerBehav enemySpawner;
     public AudioSource shootSound;
     public AudioSource deathSound;
+    public int scorePoints;
 
 
 
@@ -89,7 +90,7 @@ public class NewEnemy : MonoBehaviour
             if (life == 0)
             {
                 deathSound.Play();
-                enemySpawner.increaseScore(20);
+                enemySpawner.increaseScore(scorePoints);
                 Invoke(nameof(destroyThis), 0.2f);
                 enemySpawner.decreaseCount();
             }

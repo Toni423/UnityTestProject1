@@ -10,7 +10,8 @@ public class SquareBehav : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool reloading = false;
-    private float reloadTime = 2f;
+    private float reloadTime = 1f;
+    private float chargeTime = 1.5f;
 
     public float verticalSpeed = 5f;
     public GameObject playerBullet;
@@ -36,7 +37,7 @@ public class SquareBehav : MonoBehaviour
         transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
         reloadSlider.maxValue = reloadTime;
         reloadSlider.value = reloadSlider.maxValue;
-        chargeSlider.maxValue = 2f;
+        chargeSlider.maxValue = chargeTime;
         chargeSlider.value = 0f;
     }
 
@@ -86,7 +87,7 @@ public class SquareBehav : MonoBehaviour
 
     private IEnumerator shoot(float loadTime)
     {
-        if(loadTime < 2f)
+        if(loadTime < chargeTime)
         {
             shootSound.Play();
         }
@@ -98,7 +99,7 @@ public class SquareBehav : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
 
-        if (loadTime < 2f)
+        if (loadTime < chargeTime)
         {
             if (playerBullet == null)
             {

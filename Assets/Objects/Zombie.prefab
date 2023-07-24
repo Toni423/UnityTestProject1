@@ -108,6 +108,7 @@ MonoBehaviour:
   life: 3
   shootSound: {fileID: -5571789822264467298}
   deathSound: {fileID: -1934106088523129632}
+  scorePoints: 10
 --- !u!61 &9030558910712696511
 BoxCollider2D:
   m_ObjectHideFlags: 0
