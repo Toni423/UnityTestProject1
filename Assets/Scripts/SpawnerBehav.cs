@@ -11,7 +11,15 @@ public abstract class SpawnerBehav : MonoBehaviour
     public float spawnCooldownMax = 11f;
     public int count = 0;
     protected int itemMaxCount = 1;
+    private float minYvalue;
+    private float maxYvalue;
 
+
+    private void Awake()
+    {
+        minYvalue = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y + 1f;
+        maxYvalue = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)).y - 1f;
+    }
 
     // Update is called once per frame
     void Update()

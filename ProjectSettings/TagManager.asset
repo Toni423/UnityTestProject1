@@ -11,6 +11,7 @@ TagManager:
   - EnemySpawner
   - ItemSpawner
   - LifeText
+  - Border
   layers:
   - Default
   - TransparentFX

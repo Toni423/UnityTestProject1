@@ -22,23 +22,31 @@ public class SquareBehav : MonoBehaviour
     public AudioSource superiorShootSound;
     private bool isWpressed = false;
     private float shootStartTime;
-    public Slider reloadSlider;
-    public Slider chargeSlider;
     private bool charging = false;
+
     public GameObject healthbar;
     private Image health;
 
+    public GameObject reloadBarImage;
+    private Image reloadBarImg;
+
+    public GameObject chargeBarImage;
+    private Image chargeBarImg;
 
 
     private void Start()
     {
         health = healthbar.GetComponent<Image>();
+        reloadBarImg = reloadBarImage.GetComponent<Image>();
+        chargeBarImg = chargeBarImage.GetComponent<Image>();
+
         rb = GetComponent<Rigidbody2D>();
-        transform.SetPositionAndRotation(new Vector3(-7.7f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
-        reloadSlider.maxValue = reloadTime;
-        reloadSlider.value = reloadSlider.maxValue;
-        chargeSlider.maxValue = chargeTime;
-        chargeSlider.value = 0f;
+
+
+        Camera mainCamera = Camera.main;
+        Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
+        transform.SetPositionAndRotation(new Vector3(bottomLeft.x + 1f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
+        
     }
 
     private void Update()
@@ -53,14 +61,14 @@ public class SquareBehav : MonoBehaviour
         else if(Input.GetKey(KeyCode.Space) && isWpressed && !charging)
         {
             charging = true;
-            chargeSlider.value += 0.1f;
-            Invoke(nameof(releaseCharge), 0.1f);
+            chargeBarImg.fillAmount += 0.01f;
+            Invoke(nameof(releaseCharge), 0.0175f);
         }
         else if (!Input.GetKey(KeyCode.Space) && isWpressed)
         {
-            chargeSlider.value = 0f;
+            chargeBarImg.fillAmount = 0f;
             StartCoroutine(shoot(Time.time - shootStartTime));
-            reloadSlider.value = 0f;
+            reloadBarImg.fillAmount = 0f;
             StartCoroutine(reloadBar());
             isWpressed = false;
             Invoke(nameof(reload), reloadTime);
@@ -120,10 +128,10 @@ public class SquareBehav : MonoBehaviour
 
     private IEnumerator reloadBar()
     {
-        while(reloadSlider.value < reloadTime)
+        while(reloadBarImg.fillAmount < 1f)
         {
-            reloadSlider.value += 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            reloadBarImg.fillAmount += 0.01f;
+            yield return new WaitForSeconds(0.01f * reloadTime);
         }
     }
 

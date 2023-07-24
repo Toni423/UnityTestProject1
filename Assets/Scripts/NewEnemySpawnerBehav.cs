@@ -18,7 +18,10 @@ public class NewEnemySpawnerBehav : SpawnerBehav
         spawnCooldownMin = 7f;
         spawnCooldownMax = 11f;
         itemMaxCount = 4; ;
-        transform.SetPositionAndRotation(new Vector3(7.7f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
+
+
+        Camera mainCamera = Camera.main;
+        transform.SetPositionAndRotation(new Vector3(mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane)).x - 1f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
     }
 
 

@@ -18,11 +18,18 @@ public class NewEnemy : MonoBehaviour
     public AudioSource deathSound;
     public int scorePoints;
 
+    private float minYvalue;
+    private float maxYvalue;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        minYvalue = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y + 0.9f;
+        maxYvalue = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)).y - 0.9f;
+
+
         GameObject spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemySpawner = spawner.GetComponent<NewEnemySpawnerBehav>();
 
@@ -44,7 +51,7 @@ public class NewEnemy : MonoBehaviour
 
     private void move()
     {
-        if (gameObject.transform.position.y > 4.2 || gameObject.transform.position.y < -3.9)
+        if (gameObject.transform.position.y > maxYvalue || gameObject.transform.position.y < minYvalue)
         {
             direct *= -1;
         }
