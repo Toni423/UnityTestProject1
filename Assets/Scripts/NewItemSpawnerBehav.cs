@@ -15,7 +15,7 @@ public class NewItemSpawnerBehav : SpawnerBehav
         spawnCooldownMax = 25f;
         itemMaxCount = 1;
 
-        transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
+        transform.SetPositionAndRotation(new Vector3(-7.7f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
         square = GameObject.FindGameObjectWithTag("Player");
 
         Invoke(nameof(restoreCooldown), Random.Range(spawnCooldownMin, spawnCooldownMax));

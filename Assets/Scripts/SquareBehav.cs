@@ -34,7 +34,7 @@ public class SquareBehav : MonoBehaviour
     {
         health = healthbar.GetComponent<Image>();
         rb = GetComponent<Rigidbody2D>();
-        transform.SetPositionAndRotation(new Vector3(-8.4f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
+        transform.SetPositionAndRotation(new Vector3(-7.7f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
         reloadSlider.maxValue = reloadTime;
         reloadSlider.value = reloadSlider.maxValue;
         chargeSlider.maxValue = chargeTime;

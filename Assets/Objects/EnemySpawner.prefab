@@ -48,5 +48,5 @@ MonoBehaviour:
   spawnCooldownMin: 7
   spawnCooldownMax: 11
   count: 0
-  zombie: {fileID: 8441814360941443366, guid: ff6308699222b7049876f0ad6728da6d, type: 3}
-  skeleton: {fileID: 5933853990136620532, guid: 1d5a309879b267e408b130aeb7068ce3, type: 3}
+  zombie: {fileID: 2799986351733655579, guid: ff6308699222b7049876f0ad6728da6d, type: 3}
+  skeleton: {fileID: 4945291831845714348, guid: 1d5a309879b267e408b130aeb7068ce3, type: 3}

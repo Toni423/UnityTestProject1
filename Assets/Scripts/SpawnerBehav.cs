@@ -16,7 +16,7 @@ public abstract class SpawnerBehav : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.y > 4.156 || gameObject.transform.position.y < -4.526)
+        if (gameObject.transform.position.y > 4.1 || gameObject.transform.position.y < -3.8)
         {
             direct *= -1;
         }

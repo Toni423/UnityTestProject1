@@ -44,7 +44,7 @@ public class NewEnemy : MonoBehaviour
 
     private void move()
     {
-        if (gameObject.transform.position.y > 4.156 || gameObject.transform.position.y < -4.526)
+        if (gameObject.transform.position.y > 4.2 || gameObject.transform.position.y < -3.9)
         {
             direct *= -1;
         }

@@ -13,4 +13,9 @@ public class EventSystem : MonoBehaviour
         animator.Play(clipName, 0);
     }
 
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+ 
 }
