@@ -5,10 +5,14 @@ using UnityEngine;
 public class BulletBehav : MonoBehaviour
 {
     public float moveSpeed = 8f;
+    public int direct;
+    private string hittable;
 
     // Start is called before the first frame update
     void Start()
     {
+        hittable = direct == 1 ? "Enemy" : "Player";
+        moveSpeed *= direct;
         Destroy(gameObject, 4f);
     }
 
@@ -25,9 +29,13 @@ public class BulletBehav : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the other collider belongs to the "ObjectB."
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag(hittable))
         {
             Destroy(gameObject, 0.05f);
+        }
+        else if (other.gameObject.CompareTag("Border"))
+        {
+            Destroy(gameObject);
         }
     }
 }

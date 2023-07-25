@@ -20,6 +20,7 @@ public class SquareBehav : MonoBehaviour
     public AudioSource healAudio;
     public AudioSource shootSound;
     public AudioSource superiorShootSound;
+    public AudioSource hitSound;
     private bool isWpressed = false;
     private float shootStartTime;
     private bool charging = false;
@@ -47,6 +48,7 @@ public class SquareBehav : MonoBehaviour
         Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
         transform.SetPositionAndRotation(new Vector3(bottomLeft.x + 1f, 0, 0), new Quaternion(0f, 0f, 0f, 0f));
         
+       
     }
 
     private void Update()
@@ -145,19 +147,20 @@ public class SquareBehav : MonoBehaviour
         // Check if the other collider belongs to the "ObjectB."
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
+            hitSound.Play();
             life--;
             health.fillAmount = life / 3f;
         }
 
         if (other.gameObject.CompareTag("2DmgEnemybullet"))
         {
+            hitSound.Play();
             life -= 2;
             health.fillAmount = life / 3f;
         }
 
         if (life <= 0)
         {
-
             SceneManager.LoadScene("MainMenu");
         }
     }

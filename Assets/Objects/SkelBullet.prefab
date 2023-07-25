@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4052111768648181879}
   - component: {fileID: 127447958265771063}
-  - component: {fileID: -5330289218944698832}
   - component: {fileID: 4824099606665523718}
   - component: {fileID: 1426623499915945456}
+  - component: {fileID: -2611141109310786142}
   m_Layer: 0
   m_Name: SkelBullet
   m_TagString: 2DmgEnemybullet
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5330289218944698832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9058171173462564497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505eac953fb16a1489382e20892b694a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 13
 --- !u!50 &4824099606665523718
 Rigidbody2D:
   serializedVersion: 4
@@ -162,3 +149,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0.008382961, y: -0.0175551}
   m_Size: {x: 0.4362329, y: 0.61489}
   m_Direction: 0
+--- !u!114 &-2611141109310786142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058171173462564497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33fd562ee8883884fbf8f0d41c3a8583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 13
+  direct: -1

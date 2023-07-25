@@ -16,6 +16,7 @@ public class NewEnemy : MonoBehaviour
     private NewEnemySpawnerBehav enemySpawner;
     public AudioSource shootSound;
     public AudioSource deathSound;
+    public AudioSource hitSound;
     public int scorePoints;
 
     private float minYvalue;
@@ -93,6 +94,7 @@ public class NewEnemy : MonoBehaviour
         // Check if the other collider belongs to the "ObjectB."
         if (other.gameObject.CompareTag("Bullet"))
         {
+            hitSound.Play();
             life--;
             if (life == 0)
             {
