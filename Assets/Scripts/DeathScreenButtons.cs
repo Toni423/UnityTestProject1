@@ -7,13 +7,18 @@ public class DeathScreenButtons : MonoBehaviour
 {
     
     public void toMainMenu() {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        
+        StartCoroutine(loadScene("MainMenu"));
     }
 
     public void tryAgain() {
+        
+        StartCoroutine(loadScene(SceneManager.GetActiveScene().name));
+    }
+
+    private IEnumerator loadScene(string scene) {
+        yield return new WaitForSecondsRealtime(0.7f);
         Time.timeScale = 1f;
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        SceneManager.LoadScene(scene);
     }
 }

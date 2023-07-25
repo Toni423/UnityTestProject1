@@ -13,6 +13,9 @@ public class PlayEventSystem : MonoBehaviour
 
     public GameObject deathScreen;
 
+    public AudioSource backgroundSong;
+    public AudioSource resumeSound;
+
     void Start()
     {
         // Play the animation.
@@ -36,9 +39,13 @@ public class PlayEventSystem : MonoBehaviour
 
         // Show/hide the pause canvas based on the pause state.
         pauseCanvas.SetActive(isPaused);
+        if (!isPaused) {
+            resumeSound.Play();
+        }
     }
 
     public void showDeathScreen() {
+        backgroundSong.Stop();
         Time.timeScale = 0f;
         deathScreen.SetActive(true);
     }

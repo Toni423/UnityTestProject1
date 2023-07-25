@@ -7,6 +7,8 @@ public class EventSystem : MonoBehaviour
     public Animator animator;
     public string clipName;
 
+    public AudioSource backgroundMusic;
+
     void Start()
     {
         // Play the animation.
@@ -15,6 +17,10 @@ public class EventSystem : MonoBehaviour
 
     public void quitGame()
     {
+        backgroundMusic.Stop();
+        Invoke(nameof(quitting), 1f);
+    }
+    private void quitting() {
         Application.Quit();
     }
  

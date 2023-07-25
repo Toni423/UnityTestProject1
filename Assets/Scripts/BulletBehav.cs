@@ -5,14 +5,13 @@ using UnityEngine;
 public class BulletBehav : MonoBehaviour
 {
     public float moveSpeed = 8f;
-    public int direct;
     private string hittable;
 
     // Start is called before the first frame update
     void Start()
     {
-        hittable = direct == 1 ? "Enemy" : "Player";
-        moveSpeed *= direct;
+        moveSpeed *= gameObject.tag == "Bullet" ? 1 : -1;
+        hittable = gameObject.tag == "Bullet" ? "Enemy" : "Player";
         Destroy(gameObject, 4f);
     }
 
