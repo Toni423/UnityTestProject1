@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SquareBehav : MonoBehaviour
@@ -33,6 +32,8 @@ public class SquareBehav : MonoBehaviour
 
     public GameObject chargeBarImage;
     private Image chargeBarImg;
+
+    public GameObject eventSystem;
 
 
     private void Start()
@@ -161,7 +162,7 @@ public class SquareBehav : MonoBehaviour
 
         if (life <= 0)
         {
-            SceneManager.LoadScene("MainMenu");
+            eventSystem.GetComponent<PlayEventSystem>().showDeathScreen();
         }
     }
 

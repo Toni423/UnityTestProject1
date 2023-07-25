@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class SpawnerBehav : MonoBehaviour
 {
     private int direct = 1;
-    public float moveSpeed = 1f;
+    private float moveSpeed = 1f;
     protected bool cooldown = false;
     public float spawnCooldownMin = 7f;
     public float spawnCooldownMax = 11f;

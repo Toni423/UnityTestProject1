@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ExitButton : MonoBehaviour
 {
-    public void toMainScreen()
-    {
-        Time.timeScale = 1f;
-        Invoke(nameof(exiting), 0.75f);
-    }
-    private void exiting()
-    {
-        SceneManager.LoadScene("MainMenu");
 
+    public void exit() {
+        StartCoroutine(exiting());
+    }
+
+    private IEnumerator exiting()
+    {
+        yield return new WaitForSecondsRealtime(0.75f);
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 }
