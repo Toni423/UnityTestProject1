@@ -50,3 +50,4 @@ MonoBehaviour:
   count: 0
   zombie: {fileID: 2799986351733655579, guid: ff6308699222b7049876f0ad6728da6d, type: 3}
   skeleton: {fileID: 4945291831845714348, guid: 1d5a309879b267e408b130aeb7068ce3, type: 3}
+  fastGuy: {fileID: 8742307889800437351, guid: c9c68d734bc68bf4e9d756036bd24704, type: 3}

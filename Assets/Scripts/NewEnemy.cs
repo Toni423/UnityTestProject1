@@ -8,7 +8,7 @@ public class NewEnemy : MonoBehaviour
     public float moveSpeedMin = 1.5f;
     public float moveSpeedMax = 3f;
     private float moveSpeed;
-    private bool reloading = false;
+    protected bool reloading = false;
     public float reloadTimeMin = 3f;
     public float reloadTimeMax = 5f;
     public GameObject bullet;
@@ -64,7 +64,7 @@ public class NewEnemy : MonoBehaviour
         transform.Translate(movement);
     }
 
-    private void shoot()
+    protected virtual void shoot()
     {
         if (reloading)
         {
@@ -80,11 +80,11 @@ public class NewEnemy : MonoBehaviour
         Invoke(nameof(spawnBullet), 0.2f);
         Invoke(nameof(reload), Random.Range(reloadTimeMin, reloadTimeMax));
     }
-    private void spawnBullet()
+    protected void spawnBullet()
     {
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
-    private void reload()
+    protected void reload()
     {
         reloading = false;
     }
