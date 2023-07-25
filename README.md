@@ -1,2 +1,2 @@
 # UnityTestProject1
-Project to practise unity and setting up vsl with github and unity
+Project to practise unity
