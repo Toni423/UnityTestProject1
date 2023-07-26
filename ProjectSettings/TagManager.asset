@@ -12,6 +12,7 @@ TagManager:
   - ItemSpawner
   - LifeText
   - Border
+  - ShopManager
   layers:
   - Default
   - TransparentFX

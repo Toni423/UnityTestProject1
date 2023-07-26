@@ -15,13 +15,5 @@ public class UIManager : MonoBehaviour
         highscore.SetText("HighScore: " + PlayerPrefs.GetInt("HighScore", 0));
     }
 
-    public void startGame()
-    {
-        Invoke(nameof(starting), 1f);
-    }
-
-    private void starting()
-    {
-        SceneManager.LoadScene("PlayScene");
-    }
+    
 }

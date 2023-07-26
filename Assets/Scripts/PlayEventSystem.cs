@@ -44,6 +44,7 @@ public class PlayEventSystem : MonoBehaviour
         }
     }
 
+
     public void showDeathScreen() {
         backgroundSong.Stop();
         Time.timeScale = 0f;

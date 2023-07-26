@@ -439,7 +439,7 @@ PrefabInstance:
     - target: {fileID: 8948961942402484083, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1242157739}
+      objectReference: {fileID: 682018820}
     - target: {fileID: 8948961942402484083, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -454,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: toMainMenu
+      value: loadScene
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DeathScreenButtons, Assembly-CSharp
+      value: LoadSceneButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -487,6 +487,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 742304830}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8948961942402484085, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 682018820}
     - targetCorrespondingSourceObject: {fileID: 8948961942402484085, guid: bf03628e149d5124fbe732ad256e1cfd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 682018819}
@@ -1757,6 +1760,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &682018820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609193930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ccd4d7153069d40b6daabd7f1b6237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: MainMenu
 --- !u!1 &724390220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,7 +3630,6 @@ GameObject:
   - component: {fileID: 1242157737}
   - component: {fileID: 1242157736}
   - component: {fileID: 1242157735}
-  - component: {fileID: 1242157739}
   - component: {fileID: 1242157740}
   m_Layer: 5
   m_Name: DeathScreen
@@ -3709,18 +3724,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1242157739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242157734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ccd4d7153069d40b6daabd7f1b6237, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1242157740
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3948,7 +3951,7 @@ PrefabInstance:
     - target: {fileID: 8948961942402484083, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1242157739}
+      objectReference: {fileID: 1530778643}
     - target: {fileID: 8948961942402484083, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3963,7 +3966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: tryAgain
+      value: loadScene
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3971,7 +3974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DeathScreenButtons, Assembly-CSharp
+      value: LoadSceneButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8948961942402484083, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3992,6 +3995,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 371342949}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8948961942402484085, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1530778643}
     - targetCorrespondingSourceObject: {fileID: 8948961942402484085, guid: 0936df37a5cbb354c8b28b7a144f7718, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1530778642}
@@ -4097,6 +4103,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1530778643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105785986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ccd4d7153069d40b6daabd7f1b6237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: PlayScene
 --- !u!1 &1987199555
 GameObject:
   m_ObjectHideFlags: 0
