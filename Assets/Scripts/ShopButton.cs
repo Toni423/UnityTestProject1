@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,8 @@ public class ShopButton : MonoBehaviour
 
     private void Start() {
         shopManager = GameObject.FindGameObjectWithTag("ShopManager").GetComponent<ShopManager>();
+
+        priceText.GetComponent<TextMeshProUGUI>().SetText("" + price);
 
         priceBox = priceTag.GetComponent<Image>();
         unlocked = PlayerPrefs.GetInt(prefName, 0) == 1;

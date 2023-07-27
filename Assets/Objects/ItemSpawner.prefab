@@ -49,3 +49,5 @@ MonoBehaviour:
   count: 0
   heart: {fileID: 6207848989288399194, guid: 05177523ee2f28046a23b989cf30d563, type: 3}
   feather: {fileID: 1529891122882972161, guid: 33b409b68659bce4d9d2ded48d0a59be, type: 3}
+  apple: {fileID: 6873580503138021422, guid: bad6f7750432da84a9b3c3fa50446838, type: 3}
+  seed: {fileID: 5243310262203207652, guid: ff95ffd499cfee64398afe2f62381c2e, type: 3}

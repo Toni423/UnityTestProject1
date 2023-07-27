@@ -56,6 +56,8 @@ public class NewEnemySpawnerBehav : SpawnerBehav {
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
+
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + score / 4);
     }
 
 }

@@ -7,16 +7,18 @@ public class NewItemSpawnerBehav : SpawnerBehav
     public GameObject heart;
     private GameObject square;
     public GameObject feather;
+    public GameObject apple;
+    public GameObject seed;
 
-    private List<GameObject> filteredItems = new List<GameObject>();
+    private List<GameObject> filteredItems = new();
 
     // Start is called before the first frame update
     void Start()
     {
         filteredItems.Add(heart);
 
-        GameObject[] unfilteredItems = { feather };
-        bool[] itemBools = { PlayerPrefs.GetInt("feather", 0) == 1 };
+        GameObject[] unfilteredItems = { feather, apple, seed };
+        bool[] itemBools = { PlayerPrefs.GetInt("feather", 0) == 1 , PlayerPrefs.GetInt("apple", 0) == 1 , PlayerPrefs.GetInt("seed", 0) == 1 };
 
         if( unfilteredItems.Length != itemBools.Length) {
             Debug.Log("ItemSpawner: Length of unfiltered items and bools not equal");

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SquareBehav : MonoBehaviour
+public class PlayerBehav : MonoBehaviour
 
 {
     private Rigidbody2D rb;
@@ -22,7 +22,7 @@ public class SquareBehav : MonoBehaviour
     public AudioSource hitSound;
     private bool isWpressed = false;
     private float shootStartTime;
-    private bool charging = false;
+    
 
     public GameObject healthbar;
     private Image health;
@@ -34,6 +34,7 @@ public class SquareBehav : MonoBehaviour
     private Image chargeBarImg;
 
     public GameObject eventSystem;
+
 
 
     private void Start()
@@ -60,23 +61,27 @@ public class SquareBehav : MonoBehaviour
             reloading = true;
             isWpressed = true;
             shootStartTime = Time.time;
+            StartCoroutine(chargeBar());
         }
-        else if(Input.GetKey(KeyCode.Space) && isWpressed && !charging)
-        {
-            charging = true;
-            chargeBarImg.fillAmount += 0.01f;
-            StartCoroutine(DelayedCoroutine.delayedCoroutine(0.013f, () => charging = false));
-            
-        }
+        
         else if (!Input.GetKey(KeyCode.Space) && isWpressed)
         {
-            chargeBarImg.fillAmount = 0f;
+            
             StartCoroutine(shoot(Time.time - shootStartTime));
             reloadBarImg.fillAmount = 0f;
             StartCoroutine(reloadBar());
             isWpressed = false;
             StartCoroutine(DelayedCoroutine.delayedCoroutine(reloadTime, () => reloading = false));
-               
+            StartCoroutine(DelayedCoroutine.delayedCoroutine(0.01f, () => chargeBarImg.fillAmount = 0f));
+            
+        }
+    }
+
+    private IEnumerator chargeBar() {
+        while(Input.GetKey(KeyCode.Space)) {
+            
+            chargeBarImg.fillAmount += 0.01f;
+            yield return new WaitForSeconds(0.01f * chargeTime);
         }
     }
     
@@ -172,8 +177,25 @@ public class SquareBehav : MonoBehaviour
 
             if (itemName == "feather") {
                 verticalSpeed *= 1.5f;
-                StartCoroutine(DelayedCoroutine.delayedCoroutine(5f, () => verticalSpeed /= 1.5f));
+                StartCoroutine(DelayedCoroutine.delayedCoroutine(10f, () => verticalSpeed /= 1.5f));
+                return;
             }
+
+            if (itemName == "apple") {
+                healAudio.Play();
+                life = Mathf.Min(3, life + 2);
+                health.fillAmount = life / 3f;
+                return;
+            }
+
+            if (itemName == "seed") {
+                reloadTime /= 2f;
+                chargeTime /= 2f;
+                StartCoroutine(DelayedCoroutine.delayedCoroutine(10f, () => reloadTime *= 2f));
+                StartCoroutine(DelayedCoroutine.delayedCoroutine(10f, () => chargeTime *= 2f));
+                return;
+            }
+
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemBehav : MonoBehaviour
 {
-    private SquareBehav player;
+    private PlayerBehav player;
     private NewItemSpawnerBehav itemSpawner;
     private bool pickedUp = false;
     public string itemName;
@@ -14,7 +14,7 @@ public class ItemBehav : MonoBehaviour
     void Start()
     {
         GameObject square = GameObject.FindGameObjectWithTag("Player");
-        player = square.GetComponent<SquareBehav>();
+        player = square.GetComponent<PlayerBehav>();
 
         GameObject spawner = GameObject.FindGameObjectWithTag("ItemSpawner");
         itemSpawner = spawner.GetComponent<NewItemSpawnerBehav>();
