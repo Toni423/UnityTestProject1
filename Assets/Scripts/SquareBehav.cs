@@ -65,7 +65,8 @@ public class SquareBehav : MonoBehaviour
         {
             charging = true;
             chargeBarImg.fillAmount += 0.01f;
-            Invoke(nameof(releaseCharge), 0.0175f);
+            StartCoroutine(DelayedCoroutine.delayedCoroutine(0.013f, () => charging = false));
+            
         }
         else if (!Input.GetKey(KeyCode.Space) && isWpressed)
         {
@@ -74,14 +75,11 @@ public class SquareBehav : MonoBehaviour
             reloadBarImg.fillAmount = 0f;
             StartCoroutine(reloadBar());
             isWpressed = false;
-            Invoke(nameof(reload), reloadTime);
-            
+            StartCoroutine(DelayedCoroutine.delayedCoroutine(reloadTime, () => reloading = false));
+               
         }
     }
-    private void releaseCharge()
-    {
-        charging = false;
-    }
+    
 
     private void FixedUpdate()
     {
@@ -138,10 +136,6 @@ public class SquareBehav : MonoBehaviour
         }
     }
 
-    private void reload()
-    {
-        reloading = false;
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -167,13 +161,22 @@ public class SquareBehav : MonoBehaviour
     }
 
     private object locker = new();
-    public void lifegain(int gain)
-    {
-        lock (locker)
-        {
-            healAudio.Play();
-            life = Mathf.Min(3, life + gain);
-            health.fillAmount = life / 3f;
+    public void itemPickedUp(string itemName) {
+        lock(locker) {
+            if (itemName == "heart") {
+                healAudio.Play();
+                life = Mathf.Min(3, life + 1);
+                health.fillAmount = life / 3f;
+                return;
+            }
+
+            if (itemName == "feather") {
+                verticalSpeed *= 1.5f;
+                StartCoroutine(DelayedCoroutine.delayedCoroutine(5f, () => verticalSpeed /= 1.5f));
+            }
         }
     }
+
+    
+    
 }

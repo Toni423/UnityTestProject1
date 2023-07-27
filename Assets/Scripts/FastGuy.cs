@@ -18,15 +18,14 @@ public class FastGuy : NewEnemy
         }
         reloading = true;
         shootSound.Play();
-        Invoke(nameof(spawnBullet), 0.2f);
-        Invoke(nameof(secondShoot), 0.3f);
-        Invoke(nameof(reload), Random.Range(reloadTimeMin, reloadTimeMax));
+        
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(0.2f, () => Instantiate(bullet, transform.position, Quaternion.identity)));
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(0.5f, () => shootSound.Play()));
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(0.7f, () => Instantiate(bullet, transform.position, Quaternion.identity)));
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(Random.Range(reloadTimeMin, reloadTimeMax) + 1.4f, () => reloading = false));
+
+        
     }
 
-    private void secondShoot()
-    {
-        shootSound.Play();
-        Invoke(nameof(spawnBullet), 0.2f);
-    }
-
+    
 }

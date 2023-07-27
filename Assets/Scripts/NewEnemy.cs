@@ -77,17 +77,11 @@ public class NewEnemy : MonoBehaviour
         }
         reloading = true;
         shootSound.Play();
-        Invoke(nameof(spawnBullet), 0.2f);
-        Invoke(nameof(reload), Random.Range(reloadTimeMin, reloadTimeMax));
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(0.2f, () => Instantiate(bullet, transform.position, Quaternion.identity)));
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(Random.Range(reloadTimeMin, reloadTimeMax) + 0.2f, () => reloading = false));
+        
     }
-    protected void spawnBullet()
-    {
-        Instantiate(bullet, transform.position, Quaternion.identity);
-    }
-    protected void reload()
-    {
-        reloading = false;
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -100,13 +94,10 @@ public class NewEnemy : MonoBehaviour
             {
                 deathSound.Play();
                 enemySpawner.increaseScore(scorePoints);
-                Invoke(nameof(destroyThis), 0.2f);
+                StartCoroutine(DelayedCoroutine.delayedCoroutine(0.2f, () => Destroy(gameObject)));
                 enemySpawner.decreaseCount();
             }
         }
     }
-    private void destroyThis()
-    {
-        Destroy(gameObject);
-    }
+    
 }

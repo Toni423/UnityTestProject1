@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52503be9fa276eb469632c911baa0393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  spawnCooldownMin: 7
-  spawnCooldownMax: 11
+  spawnCooldownMin: 1
+  spawnCooldownMax: 2
   count: 0
   heart: {fileID: 6207848989288399194, guid: 05177523ee2f28046a23b989cf30d563, type: 3}
+  feather: {fileID: 1529891122882972161, guid: 33b409b68659bce4d9d2ded48d0a59be, type: 3}

@@ -6,10 +6,29 @@ public class NewItemSpawnerBehav : SpawnerBehav
 {
     public GameObject heart;
     private GameObject square;
+    public GameObject feather;
+
+    private List<GameObject> filteredItems = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        filteredItems.Add(heart);
+
+        GameObject[] unfilteredItems = { feather };
+        bool[] itemBools = { PlayerPrefs.GetInt("feather", 0) == 1 };
+
+        if( unfilteredItems.Length != itemBools.Length) {
+            Debug.Log("ItemSpawner: Length of unfiltered items and bools not equal");
+        }
+
+        for(int i = 0; i < unfilteredItems.Length; i++) {
+            if(itemBools[i]) {
+                filteredItems.Add(unfilteredItems[i]);
+            }
+        }
+
+
         cooldown = true;
         spawnCooldownMin = 20f;
         spawnCooldownMax = 25f;
@@ -25,12 +44,9 @@ public class NewItemSpawnerBehav : SpawnerBehav
 
     protected override GameObject getObjectToSpawn()
     {
-        if(heart == null)
-        {
-            Debug.Log("ItemSpawner: Heart not selected");
-            return null;
-        }
-        return heart;
+
+        return filteredItems[Random.Range(0, filteredItems.Count)];
+
     }
 
     public override void decreaseCount()

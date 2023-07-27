@@ -18,10 +18,7 @@ public class EventSystem : MonoBehaviour
     public void quitGame()
     {
         backgroundMusic.Stop();
-        Invoke(nameof(quitting), 1f);
+        StartCoroutine(DelayedCoroutine.delayedCoroutine(1f, () => Application.Quit()));
     }
-    private void quitting() {
-        Application.Quit();
-    }
- 
+   
 }

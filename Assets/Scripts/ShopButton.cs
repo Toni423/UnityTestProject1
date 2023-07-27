@@ -40,12 +40,17 @@ public class ShopButton : MonoBehaviour
         }
 
 
+
     }
+
+
+
 
     private void unlock() {
         priceBox.sprite = bought;
         priceText.SetActive(false);
         lockImage.SetActive(true);
+        
     }
 
     private void buy() {
