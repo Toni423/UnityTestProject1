@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 619963553}
   clipName: Background_anim_2
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 619963552}
 --- !u!114 &619963556
 MonoBehaviour:
   m_ObjectHideFlags: 0
