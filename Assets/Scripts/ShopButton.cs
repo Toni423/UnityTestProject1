@@ -15,7 +15,8 @@ public class ShopButton : MonoBehaviour
     public GameObject priceTag;
     private Image priceBox;
     public GameObject priceText;
-    public GameObject lockImage;
+    public GameObject lockImageClosed;
+    public GameObject lockImageOpen;
 
     public int price;
     private ShopManager shopManager;
@@ -27,7 +28,7 @@ public class ShopButton : MonoBehaviour
         priceText.GetComponent<TextMeshProUGUI>().SetText("" + price);
 
         priceBox = priceTag.GetComponent<Image>();
-        unlocked = PlayerPrefs.GetInt(prefName, 0) == 1;
+        unlocked = PlayerPrefs.GetInt(prefName, 0) != 0;
 
 
         if(unlocked) {
@@ -42,8 +43,9 @@ public class ShopButton : MonoBehaviour
             return;
         }
 
-
-
+        PlayerPrefs.SetInt(prefName + "IsActive", PlayerPrefs.GetInt(prefName + "IsActive", 0) == 0 ? 1 : 0);
+        lockImageClosed.SetActive(PlayerPrefs.GetInt(prefName + "IsActive", 0) == 1);
+        lockImageOpen.SetActive(PlayerPrefs.GetInt(prefName + "IsActive", 0) == 0);
     }
 
 
@@ -52,8 +54,8 @@ public class ShopButton : MonoBehaviour
     private void unlock() {
         priceBox.sprite = bought;
         priceText.SetActive(false);
-        lockImage.SetActive(true);
-        
+        lockImageClosed.SetActive(PlayerPrefs.GetInt(prefName + "IsActive", 0) == 1);
+        lockImageOpen.SetActive(PlayerPrefs.GetInt(prefName + "IsActive", 0) == 0);
     }
 
     private void buy() {
@@ -62,6 +64,7 @@ public class ShopButton : MonoBehaviour
 
             unlocked = true;
             PlayerPrefs.SetInt(prefName, 1);
+            PlayerPrefs.SetInt(prefName + "IsActive", 1);
             shopManager.buySth(price);
             unlock();
 

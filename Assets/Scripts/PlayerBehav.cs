@@ -9,13 +9,14 @@ public class PlayerBehav : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool reloading = false;
-    private float reloadTime = 1f;
+    public float reloadTime = 1f;
     private float chargeTime = 1.5f;
 
     public float verticalSpeed = 5f;
     public GameObject playerBullet;
     public GameObject superiorPlayerBullet;
-    public int life = 3;
+    private int life;
+    private int maxLife;
     public AudioSource healAudio;
     public AudioSource shootSound;
     public AudioSource superiorShootSound;
@@ -35,10 +36,29 @@ public class PlayerBehav : MonoBehaviour
 
     public GameObject eventSystem;
 
+    public GameObject hat;
+    public GameObject pet;
 
+    public Animator animator;
+
+
+    private void Awake() {
+        animator.SetBool("IsRed", PlayerPrefs.GetInt("redBirdIsActive", 0) == 1);
+    }
 
     private void Start()
     {
+        maxLife = 3 + Mathf.Min(PlayerPrefs.GetInt("hearts", 0), 3);
+        life = maxLife;
+
+        verticalSpeed += PlayerPrefs.GetInt("speed", 0);
+
+        reloadTime -= (float)PlayerPrefs.GetInt("cannon", 0) / 10f;
+        chargeTime -= (float)PlayerPrefs.GetInt("cannon", 0) / 10f;
+
+        hat.SetActive(PlayerPrefs.GetInt("topHatIsActive", 0) == 1);
+        pet.SetActive(PlayerPrefs.GetInt("petBirdIsActive", 0) == 1);
+
         health = healthbar.GetComponent<Image>();
         reloadBarImg = reloadBarImage.GetComponent<Image>();
         chargeBarImg = chargeBarImage.GetComponent<Image>();
@@ -149,14 +169,14 @@ public class PlayerBehav : MonoBehaviour
         {
             hitSound.Play();
             life--;
-            health.fillAmount = life / 3f;
+            health.fillAmount = (float) life /  maxLife;
         }
 
         if (other.gameObject.CompareTag("2DmgEnemybullet"))
         {
             hitSound.Play();
             life -= 2;
-            health.fillAmount = life / 3f;
+            health.fillAmount = (float) life / maxLife;
         }
 
         if (life <= 0)
@@ -170,8 +190,8 @@ public class PlayerBehav : MonoBehaviour
         lock(locker) {
             if (itemName == "heart") {
                 healAudio.Play();
-                life = Mathf.Min(3, life + 1);
-                health.fillAmount = life / 3f;
+                life = Mathf.Min(maxLife, life + 1);
+                health.fillAmount = (float) life / maxLife;
                 return;
             }
 
@@ -183,8 +203,8 @@ public class PlayerBehav : MonoBehaviour
 
             if (itemName == "apple") {
                 healAudio.Play();
-                life = Mathf.Min(3, life + 2);
-                health.fillAmount = life / 3f;
+                life = Mathf.Min(maxLife, life + 2);
+                health.fillAmount = (float) life / maxLife;
                 return;
             }
 

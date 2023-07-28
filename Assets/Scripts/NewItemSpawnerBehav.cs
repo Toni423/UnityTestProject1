@@ -18,7 +18,7 @@ public class NewItemSpawnerBehav : SpawnerBehav
         filteredItems.Add(heart);
 
         GameObject[] unfilteredItems = { feather, apple, seed };
-        bool[] itemBools = { PlayerPrefs.GetInt("feather", 0) == 1 , PlayerPrefs.GetInt("apple", 0) == 1 , PlayerPrefs.GetInt("seed", 0) == 1 };
+        bool[] itemBools = { PlayerPrefs.GetInt("featherIsActive", 0) == 1 , PlayerPrefs.GetInt("appleIsActive", 0) == 1 , PlayerPrefs.GetInt("seedIsActive", 0) == 1 };
 
         if( unfilteredItems.Length != itemBools.Length) {
             Debug.Log("ItemSpawner: Length of unfiltered items and bools not equal");
